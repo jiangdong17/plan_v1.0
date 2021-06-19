@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>961</width>
+    <height>521</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label_kejie">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>41</y>
+     <width>27</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>课节</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_time">
+   <property name="geometry">
+    <rect>
+     <x>121</x>
+     <y>41</y>
+     <width>27</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>时间</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_19">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>58</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>晨会</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_9">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>70</y>
+     <width>170</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_11">
+    <item>
+     <widget class="QTimeEdit" name="timeEditstart_0">
+      <property name="dateTime">
+       <datetime>
+        <hour>7</hour>
+        <minute>30</minute>
+        <second>0</second>
+        <year>2021</year>
+        <month>9</month>
+        <day>1</day>
+       </datetime>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTimeEdit" name="timeEditend_0">
+      <property name="dateTime">
+       <datetime>
+        <hour>7</hour>
+        <minute>50</minute>
+        <second>0</second>
+        <year>2021</year>
+        <month>9</month>
+        <day>1</day>
+       </datetime>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton_shoosetime">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>100</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>学期时间段</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_chooseDate">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>10</y>
+     <width>100</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>选择日期</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>55</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label_ke1">
+      <property name="text">
+       <string>第一节课</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_ke2">
+      <property name="text">
+       <string>第二节课</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_ke3">
+      <property name="text">
+       <string>第三节课</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_ke4">
+      <property name="text">
+       <string>第四节课</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_ke5">
+      <property name="text">
+       <string>第五节课</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_ke6">
+      <property name="text">
+       <string>第六节课</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_ke7">
+      <property name="text">
+       <string>第七节课</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_ke8">
+      <property name="text">
+       <string>第八节课</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_ke9">
+      <property name="text">
+       <string>第九节课</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>40</y>
+     <width>631</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_Mon">
+      <property name="text">
+       <string>星期一</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_Tue">
+      <property name="text">
+       <string>星期二</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_Wed">
+      <property name="text">
+       <string>星期三</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_THur">
+      <property name="text">
+       <string>星期四</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_Fri">
+      <property name="text">
+       <string>星期五</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_Sat">
+      <property name="text">
+       <string>星期六</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_Sun">
+      <property name="text">
+       <string>星期天</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>100</y>
+     <width>172</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_1">
+        <property name="dateTime">
+         <datetime>
+          <hour>7</hour>
+          <minute>55</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_1">
+        <property name="dateTime">
+         <datetime>
+          <hour>8</hour>
+          <minute>35</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_2">
+        <property name="dateTime">
+         <datetime>
+          <hour>8</hour>
+          <minute>45</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_2">
+        <property name="dateTime">
+         <datetime>
+          <hour>9</hour>
+          <minute>25</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_3">
+        <property name="dateTime">
+         <datetime>
+          <hour>9</hour>
+          <minute>35</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_3">
+        <property name="dateTime">
+         <datetime>
+          <hour>10</hour>
+          <minute>15</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_4">
+        <property name="dateTime">
+         <datetime>
+          <hour>10</hour>
+          <minute>25</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_4">
+        <property name="dateTime">
+         <datetime>
+          <hour>11</hour>
+          <minute>5</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_5">
+        <property name="dateTime">
+         <datetime>
+          <hour>11</hour>
+          <minute>10</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_5">
+        <property name="dateTime">
+         <datetime>
+          <hour>11</hour>
+          <minute>50</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_6">
+        <property name="dateTime">
+         <datetime>
+          <hour>13</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_6">
+        <property name="dateTime">
+         <datetime>
+          <hour>13</hour>
+          <minute>40</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_8">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_7">
+        <property name="dateTime">
+         <datetime>
+          <hour>13</hour>
+          <minute>55</minute>
+          <second>0</second>
+          <year>2021</year>
+          <month>9</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_7"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_9">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_8"/>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_8"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_10">
+      <item>
+       <widget class="QTimeEdit" name="timeEditstart_9"/>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEditend_9"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>470</y>
+     <width>330</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_13">
+    <item>
+     <widget class="QPushButton" name="pushButton_kechengIN">
+      <property name="text">
+       <string>录入课程</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_kechengGAI">
+      <property name="text">
+       <string>修改课程</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_save">
+      <property name="text">
+       <string>保存</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>100</y>
+     <width>631</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_12">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLineEdit" name="kecheng_11"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_12"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_13"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_14"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_15"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_16"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_17"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_18"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_19"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <widget class="QLineEdit" name="kecheng_21"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_22"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_23"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_24"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_25"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_26"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_27"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_28"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_29"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QLineEdit" name="kecheng_31"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_32"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_33"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_34"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_35"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_36"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_37"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_38"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_39"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_9">
+      <item>
+       <widget class="QLineEdit" name="kecheng_41"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_42"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_43"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_44"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_45"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_46"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_47"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_48"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_49"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <item>
+       <widget class="QLineEdit" name="kecheng_51"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_52"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_53"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_54"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_55"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_56"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_57"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_58"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_59"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_7">
+      <item>
+       <widget class="QLineEdit" name="kecheng_61"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_62"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_63"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_64"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_65"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_66"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_67"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_68"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_69"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <widget class="QLineEdit" name="kecheng_71"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_72"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_73"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_74"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_75"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_76"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_77"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_78"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="kecheng_79"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
