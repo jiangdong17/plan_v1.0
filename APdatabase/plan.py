@@ -78,8 +78,10 @@ class Ui_MainWindow(QMainWindow):
         self.startBNT.setObjectName("startBNT")
         self.horizontalLayout.addWidget(self.startBNT)
         self.fenxiBNT = QtWidgets.QPushButton(self.centralwidget)
-        self.fenxiBNT.setGeometry(QtCore.QRect(20, 0, 100, 32))
+        self.fenxiBNT.setGeometry(QtCore.QRect(680, 20, 100, 32))
         self.fenxiBNT.setObjectName("fenxiBNT")
+        self.fenxiBNT.setStyleSheet("QPushButton{background:rgb(0, 0, 0,100);}"
+                                     "QPushButton{color:rgb(255, 230, 47, 250); font-size:20px; font-weight:bold}")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 24))
@@ -113,11 +115,11 @@ class Ui_MainWindow(QMainWindow):
             t = self.plan_list.currentRow()
             global planid_x, kemu_x, neirong_x, shichang_x, date_x
             # print(t)
-            planid_x = self.plan_list.item(t, 0).text()
-            kemu_x = self.plan_list.item(t, 2).text()
-            neirong_x = self.plan_list.item(t, 3).text()
-            shichang_x = self.plan_list.item(t, 4).text()
-            date_x = self.plan_list.item(t, 1).text()
+            planid_x = self.plan_list.item(t,0).text()
+            kemu_x = self.plan_list.item(t,2).text()
+            neirong_x = self.plan_list.item(t,3).text()
+            shichang_x = self.plan_list.item(t,4).text()
+            date_x = self.plan_list.item(t,1).text()
             a2.setvalue('planid_x',planid_x)
             a2.setvalue('shichang_x', shichang_x)
             a2.setvalue('kemu_x', kemu_x)
@@ -131,22 +133,22 @@ class Ui_MainWindow(QMainWindow):
 
 
     def play(self):
-        # self.m = test_jishi.Timer()
-        # self.m.show()
-        # self.close()
+        self.m = test_jishi.Timer()
+        self.m.show()
+        self.close()
 
-        try:
+        # try:
+        #
+        #
+        #     if self.outSelect !="":  # 判断是否选择了要删除的数据
+        #
+        #         self.m = test_jishi.Timer()
+        #         self.m.show()
+        #         self.close()
 
-
-            if self.outSelect !="":  # 判断是否选择了要删除的数据
-
-                self.m = test_jishi.Timer()
-                self.m.show()
-                self.close()
-
-        except:
-            print(21)
-            QMessageBox.warning(None, '警告', '请先选择要执行的数据！', QMessageBox.Ok)
+        # except:
+        #     print(21)
+        #     QMessageBox.warning(None, '警告', '请先选择要执行的数据！', QMessageBox.Ok)
 
 
     def query(self):#待完善：显示全部、显示完成、显示未完成、选取日期等
@@ -162,7 +164,7 @@ class Ui_MainWindow(QMainWindow):
         # self.plan_list.setStyleSheet("QTableWidge{background:rgb(255, 0, 0, 50);}"
         #                              "QTableWidge{color:rgb(255, 0, 0, 250); font-size:80px; font-weight:bold}")
         # 设置表格的标题名称
-        self.plan_list.setHorizontalHeaderLabels(["ID",'日期','科目', '内容', "计划时长"])
+        self.plan_list.setHorizontalHeaderLabels(["编号",'日期','科目', '内容', "计划时长"])
         for i in range(row):  # 遍历行
             for j in range(self.plan_list.columnCount()):  # 遍历列
                 data = QTableWidgetItem(str(result[i][j]))  # 转换后可插入表格
@@ -207,4 +209,4 @@ class Ui_MainWindow(QMainWindow):
         self.editBNT.setText(_translate("MainWindow", "修改，暂不支持"))
         self.dellBNT.setText(_translate("MainWindow", "删除"))
         self.startBNT.setText(_translate("MainWindow", "开始"))
-        self.fenxiBNT.setText(_translate("MainWindow", "战果展示"))
+        self.fenxiBNT.setText(_translate("MainWindow", "成果分析"))

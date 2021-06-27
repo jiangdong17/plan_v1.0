@@ -77,14 +77,14 @@ class Ui_MainWindow1(object):
         MainWindow1.setWindowTitle(_translate("MainWindow1", "小样，看我怎么收拾你！"))
         self.pushButton.setText(_translate("MainWindow1", "开始"))
         self.pushButton.setStyleSheet("QPushButton{background:rgb(0, 0, 0,50);}"
-                                        "QPushButton{color:rgba(20, 150, 200, 250); font-size:25px; font-weight:bold}")
+                                        "QPushButton{color:rgba(172, 255, 47, 250); font-size:25px; font-weight:bold}")
         self.pushButton_2.setText(_translate("MainWindow1", "暂停、打分"))
         self.pushButton_2.setStyleSheet("QPushButton{background:rgb(0, 0, 0,50);}"
-                                        "QPushButton{color:rgba(20, 150, 200, 250); font-size:15px; font-weight:bold}")
+                                        "QPushButton{color:rgba(172, 255, 47, 250); font-size:15px; font-weight:bold}")
 
         self.pushButton_3.setText(_translate("MainWindow1", "完成"))
         self.pushButton_3.setStyleSheet("QPushButton{background:rgb(0, 0, 0,50);}"
-                                        "QPushButton{color:rgba(20, 150, 200, 250); font-size:25px; font-weight:bold}")
+                                        "QPushButton{color:rgba(172, 255, 47, 250); font-size:25px; font-weight:bold}")
 
         # self.label_defen.setText(_translate("MainWindow1","请打分"))
 

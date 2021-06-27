@@ -62,15 +62,17 @@ class show_MainWindow(QMainWindow):
     def query1(self):  # 待完善：显示全部、显示完成、显示未完成、选取日期等
         self.plan_list.setRowCount(0)  # 清空表格中的所有行
         # 调用服务类中的公共方法执行查询语句#设置计划的数据库
-        result = service.query("select planID,date,kemu,neirong,shichang,zuotishichang,happyshichang,defen from tb_plan where wancheng_shifou =%s", 1)
+        result = service.query("select date,kemu,neirong,shichang,zuotishichang,defen from tb_plan where wancheng_shifou =%s", 1)
 
         row = len(result)  # 取得记录个数，用于设置表格的行数
 
         self.plan_list.setRowCount(row)  # 设置表格行数
-        self.plan_list.setColumnCount(8)  # 设置表格列数
+        self.plan_list.setColumnCount(6)  # 设置表格列数
+        self.plan_list.setStyleSheet("QTableWidget{background:rgb(0, 0, 0,50);}"
+                                     "QTableWidget{color:rgb(172, 255, 47, 250); font-size:20px; font-weight:bold}")
         # if a2.setvalue（）      #设置只显示未完成的数据
         # 设置表格的标题名称
-        self.plan_list.setHorizontalHeaderLabels(["ID", '日期', '科目', '内容', "计划时长","实际用时","玩耍时间","得分"])
+        self.plan_list.setHorizontalHeaderLabels(['日期', '科目', '内容', "计划时长","实际用时","得分"])
         for i in range(row):  # 遍历行
             for j in range(self.plan_list.columnCount()):  # 遍历列
                 data = QTableWidgetItem(str(result[i][j]))  # 转换后可插入表格

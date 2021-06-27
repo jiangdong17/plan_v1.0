@@ -15,8 +15,11 @@ from APservice import service
 import pymysql
 from APdatabase import plan
 sys.path.append("../") # 返回上层路径
-# from QDateTime import datetime,date
-import datetime,time
+from datetime import datetime,date,timedelta
+# import datetime,time
+global d
+d = datetime.today().date()
+print(d,type(d))
 
 
 class Ui_planIN(QMainWindow):
@@ -25,6 +28,42 @@ class Ui_planIN(QMainWindow):
         super(Ui_planIN, self).__init__()
         self.setWindowFlags(QtCore.Qt.MSWindowsFixedSizeDialogHint)
         self.setupUi(self)
+        # result_sum1 = service.query(
+        #     "select date,sum(shichang) as SC,planID from tb_plan group by date order by SC desc limit 1")
+
+        # result_sum1 = service.query("select date,sum(shichang) as SC,shichang,planID from tb_plan group by date")
+        # print(result_sum1,SC)
+
+        # db = service.open()  # 连接数据库
+        # cursor = db.cursor()  # 使用cursor()方法获取操作游标
+        # sql = "select date,sum(shichang) as SC from tb_plan group by date"
+        # cursor.execute(sql)  # 执行查询SQL语句
+        # result = cursor.fetchall()  # 记录查询结果
+        # cursor.close()  # 关闭游标
+        # db.close()  #
+        # print(result,type(result))
+        # d = self.datetime.date.today()
+        # print(d,type(d))
+        # B = {}
+        # for q in result:
+        #     print(q,type(q),"q")
+        #     t = list(q)
+        #     global d
+        #     p = str(d)
+        #     print(t,type(t),"t",t[p])
+        #     for i in range(0,len(t),2):
+        #         B[t[i]] = t[i+1]
+        # print(B,type(B))
+        # d2 = dict(zip(B.value(), B.key()))
+        # d2 = {}
+        #
+        # for key, value in B.items():
+        #
+        #
+        #     d2[value] = key
+        #     # Q = d2[str(datetime.date(2021, 6, 19))]
+        # print(d2)
+
 
     def setupUi(self, planUI):
         planUI.setObjectName("planUI")
@@ -110,35 +149,63 @@ class Ui_planIN(QMainWindow):
 
         self.retranslateUi(planUI)
         self.saveBNT.clicked.connect(self.add)
+        # self.saveBNT.clicked.connect(self.query)
 
         QtCore.QMetaObject.connectSlotsByName(planUI)
 
         # # 获取输入信息
 
+    # def query(self):
+        # D=datetime.strptime(date1,"%Y/%m/%d").date()
+        # result_sum1 = service.query("select sum(shichang) from tb_plan group by date ")
+        # result_date = service.query("select date from tb_plan")
+        # print(result_date,type(result_date))
+        # # result_sum1 = service.query("select sum(shichang) from tb_plan where date = %s order by create_time limit 1",D)
+        # global t
+        # t = 0
+        # for a in result_sum1[0]:
+        #     t +=int(a)
+        #     P = t + int(time_long)
+        # print(t,a,type(t),type(a))
+        # # result1 = service.exec("update tb_plan set jihua_zongshichang = %s where date =%S values (%s,%s)",
+        #                       (P, D))
+        # result2 = service.exec1("update tb_plan a inner join(select planID sum(shichang) as SC from tb_plan group by date) b on a.planID = b.planID set b.jihua_zongshichang = a.SC")
+        # print(result2,type(result2))
+        # pass
+
+
+
     def add(self):
+        global date1,t,time_long
         kemu = self.kemuIN.text()
         neirong = self.neirongIN.text()
         time_long = self.shichangIN.text()
 
-        date = self.dataIN.text()
-        creat_time = datetime.strptime(date,"%Y/%m/%d")
-        D = datetime.strptime(date,"%Y/%m/%d").date()
+        date1 = self.dataIN.text()
+        creat_time = datetime.strptime(date1,"%Y/%m/%d")#
+        D = datetime.strptime(date1,"%Y/%m/%d").date()
+        # D = datetime.strptime(date, "%Y/%m/%d")
+        # print(D,type(D))
+
+        t = 0
+
+        # result1 = service.query("SELECT SUM(shichang) FROM tb_plan where date = %s ",D)
+        # # result1 = service.query("SELECT sum(shichang) FROM tb_plan where date=%S", D)
+        # print(result1, type(result1))  # 统计某一天的计划总时间
+        #
+        # for a in result1[0]:
+        #     print(a,type(a))
+        #     t += int(a)
+        #     print(t,type(t))
+
+
 
         if kemu != "" and neirong != "" and int(time_long) != 0 :  # 判断不为空
-            # result = service.exec("insert into tb_plan(kemu,neirong,shichang,date,creat_time ) values (%s,%s,%s,%s,%s)",
-            #                   (kemu, neirong, time_long,D,creat_time))
-            t = 0
-
-            result1 = service.query("SELECT sum(shichang) FROM tb_plan where date=%S values (%S)",D)
-            print(result1,type(result1))#统计某一天的计划总时间
-
-            for a in result1[0]:
-                t += int(a)
-                p = t + int(time_long)
-                print(P,type(P))
-
-            result = service.exec("insert into tb_plan(kemu,neirong,shichang,date,creat_time ,jihua_zongshichang) values (%s,%s,%s,%s,%s,%s)",
-                                  (kemu, neirong, time_long, D, creat_time,P))
+            result = service.exec("insert into tb_plan(kemu,neirong,shichang,date,creat_time ) values (%s,%s,%s,%s,%s)",
+                              (kemu, neirong, time_long,D,creat_time))
+            # result = service.exec(
+            #     "insert into tb_plan(kemu,neirong,shichang,date,creat_time ,jihua_zongshichang) values (%s,%s,%s,%s,%s,%s)",
+            #     (kemu, neirong, time_long, D, creat_time, P))
 
             if result > 0:  # 如果结果大于0，说明添加成功
             # service.query()  # 在表格中显示最新数据

@@ -12,8 +12,25 @@ from APdatabase import plan
 import APdatabase.a2 as a2
 import time as timeUtil
 # from APservice.scor import *
-# from APservice import scor
+# # from APservice import scor
 # from PyQt5.QtMultimedia import QMediaPlayer,QMediaPlaylist,QMediaContent#添加音频控制
+# from PyQt5 import QtCore
+# import sys
+# from PyQt5.QtWidgets import QWidget, QApplication, QPushButton, QSlider, QLabel
+# from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+# from PyQt5.QtCore import QUrl, Qt
+import os
+# from mp3play import mp3play
+# import PyAudio
+
+# import pyaudio
+# import wave
+#
+# import sys
+# import pyaudio
+# import wave
+# from tqdm import tqdm
+# import time
 
 
 def get():
@@ -27,14 +44,11 @@ class Timer(QMainWindow, Ui_MainWindow1):
         super(Timer, self).__init__(parent)
         self.setupUi(self)
         self.initUI()
-        #
-        # self.player = QMediaPlayer(self)
-        # self.playlist = QMediaPlaylist(self)
-        # self.playlist.setPlaybackMode(QMediaPlaylist.Once)
 
 
         # 初始化设置
         self.init_setting()
+        # self.music()
 
 
     def initUI(self):
@@ -46,14 +60,13 @@ class Timer(QMainWindow, Ui_MainWindow1):
         T = {"科目":a2.getvalue('kemu_x'),"内容":a2.getvalue('neirong_x'),"计划时长":a2.getvalue('shichang_x')}
 
         # 设定 label 的样式
-        self.label.setStyleSheet("QLabel{background:rgb(0, 0, 0,100);}"
-                                 "QLabel{color:rgb(250, 250, 250, 250); font-size:80px; font-weight:bold}")
+        self.label.setStyleSheet("QLabel{background:rgb(0, 0, 0,50);}"
+                                 "QLabel{color:rgb(172, 255, 47, 250); font-size:80px; font-weight:bold}")
         self.label.setFrameShadow(QFrame.Raised)
 
-        # self.label_show.setStyleSheet("QLabel{background:rgb(0, 0, 0);}"
-        #                          "QLabel{color:rgb(20, 150, 200, 250); font-size:20px; font-weight:bold}")
+
         self.label_show.setFrameShadow(QFrame.Raised)
-        # initUI.setStyleSheet("#MainWindow1{border-image:url(image/3.jpg)}")
+
 
         # 创建 QTimer 对象
         # 将 QTimer 实例与 showTime 函数绑定
@@ -86,7 +99,7 @@ class Timer(QMainWindow, Ui_MainWindow1):
         text2 = str(T)
         self.label_show.setText(text2)
         self.label_show.setStyleSheet("QLabel{background:rgb(0, 0, 0,100);}"
-                                 "QLabel{color:rgb(20, 150, 200, 250); font-size:30px; font-weight:bold}")
+                                 "QLabel{color:rgb(172, 255, 47, 250); font-size:30px; font-weight:bold}")
 
 
 
@@ -97,11 +110,13 @@ class Timer(QMainWindow, Ui_MainWindow1):
     def dafen(self):
         defen,ok = QInputDialog.getDouble(self,"得分",'请打分',0.01,0,100,2)
 
+
         if ok:
-            self.lineEdit_defen.setText(str(defen))
+
             planID = int(a2.getvalue('planid_x'))
             result = service.exec("update tb_plan set defen=%s,wancheng_shifou=%s where planID=%s",
                                   (defen, 1, planID))
+
 
     def showTime(self):#
         # 如果暂停标志为真，self._pause_total 属性要加上暂停时间
@@ -118,11 +133,8 @@ class Timer(QMainWindow, Ui_MainWindow1):
         if int(run_time/60) < C:#5:#此处10代表计划时长的实例#此处没问题
             text = convert(run_time)
             # sleep(10)#测试暂停1秒，计时是否正常走
-            # if int(run_time/60)==P:#过1/2提示声音提示，待完成
-            #     song = QMediaContent(QUrl.fromLocalFile(filename))
-            #     self.playlist.addMedia(song)
-            #     self.player.play()
 
+            # 来源：慕课网
             self.label.setStyleSheet("QLabel{background:rgb(0, 0, 0,150);}"
                                           "QLabel{color:rgb(0, 255, 17, 250); font-size:80px; font-weight:bold}")
 
@@ -166,12 +178,17 @@ class Timer(QMainWindow, Ui_MainWindow1):
         self.setPushButton(btn1=False, btn2=True, btn3=True)
 
 
+
+
     def pauseTimer(self):
         self._pause_flag = True
         self._pause_time =  self._current_time
         # 停止发送信号
         self.timer.stop()
         self.setPushButton(btn1=True, btn2=False, btn3=True)
+
+
+
 
 
     def clearTimer(self):

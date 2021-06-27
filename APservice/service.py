@@ -29,6 +29,24 @@ def exec(sql,values):
     finally:
         cursor.close() # 关闭游标
         db.close() # 关闭数据库连接
+def exec1(sql):
+    db=open() # 连接数据库
+    cursor = db.cursor() # 使用cursor()方法获取操作游标
+
+    try:
+        cursor.execute(sql) # 执行增删改的SQL语句
+
+        db.commit() # 提交数据
+
+        return 1 # 执行成功
+
+    except:
+        db.rollback() # 发生错误时回滚
+        return 0 # 执行失败
+
+    finally:
+        cursor.close() # 关闭游标
+        db.close() # 关闭数据库连接
 
 
 
@@ -41,6 +59,8 @@ def query(sql,*keys):
     cursor.close() # 关闭游标
     db.close() # 关闭数据库连接
     return result # 返回查询结果
+
+
 
 # 不带参数的模糊查询
 def query2(sql):
@@ -63,10 +83,54 @@ def convert1(raw_time):
     return minute
 
 
-
+# def play_music():
+#     import pyaudio
 #
+#     import wave
+#
+#     import sys
+#     from PyQt5 import QtCore, QtMultimedia, QtGui
+#     import PyQt5
+#
+#     chunk = 1024
+#
+#     wf = wave.open('1.wav', 'rb')
+#
+#     p = pyaudio.PyAudio()
+#
+#     stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+#
+#                     channels=wf.getnchannels(),
+#
+#                     rate=wf.getframerate(),
+#
+#                     output=True)
+#
+#     data = wf.readframes(chunk)
+#
+#     while len(data) > 0:
+#
+#         stream.write(data)
+#
+#         data = wf.readframes(CHUNK)
+#
+#     stream.stop_stream()
+#
+#     stream.close()
+#
+#     p.terminate()
+# #
 # def add(self):#
 #     pass
 #
 # def openADDUI(self):
 #     pass
+# play_music()
+def play():
+    import winsound
+
+    # winsound.Beep(600,1000)
+
+    import os
+
+    os.system("paplay 1.wav")
