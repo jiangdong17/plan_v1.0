@@ -5,7 +5,7 @@ class Ui_MainWindow1(object):
     # print(planid_x)#测试倒入是否成功
     def setupUi(self, MainWindow1):
         MainWindow1.setObjectName("MainWindow1")
-        MainWindow1.resize(800, 570)
+        MainWindow1.resize(800, 600)
         MainWindow1.setStyleSheet("#MainWindow1{border-image:url(image/1.jpg)}")
 
         self.centralwidget = QtWidgets.QWidget(MainWindow1)#弹出对话框
@@ -86,15 +86,27 @@ class Ui_MainWindow1(object):
         self.pushButton_3.setStyleSheet("QPushButton{background:rgb(0, 0, 0,50);}"
                                         "QPushButton{color:rgba(172, 255, 47, 250); font-size:25px; font-weight:bold}")
 
+        # self.LisnBNT.setText(_translate("MainWindow1", "听写"))#新增听写，接入api
+        # self.LisnBNT.setStyleSheet("QPushButton{background:rgb(0, 0, 0,50);}"
+        #                                 "QPushButton{color:rgba(172, 255, 47, 250); font-size:25px; font-weight:bold}")
+        #
+        # self.beisongBNT.setText(_translate("MainWindow1", "背诵"))#新增背诵
+        # self.beisongBNT.setStyleSheet("QPushButton{background:rgb(0, 0, 0,50);}"
+        #                            "QPushButton{color:rgba(172, 255, 47, 250); font-size:25px; font-weight:bold}")
+        #
+        # self.cuotiBNT.setText(_translate("MainWindow1", "错题"))  # 新增错题集
+        # self.cuotiBNT.setStyleSheet("QPushButton{background:rgb(0, 0, 0,50);}"
+        #                               "QPushButton{color:rgba(172, 255, 47, 250); font-size:25px; font-weight:bold}")
+
         # self.label_defen.setText(_translate("MainWindow1","请打分"))
 
 # import txt_rc
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow1 = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow1)
-    MainWindow1.show()
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     MainWindow1 = QtWidgets.QMainWindow()
+#     ui = Ui_MainWindow()
+#     ui.setupUi(MainWindow1)
+#     MainWindow1.show()
+#     sys.exit(app.exec_())

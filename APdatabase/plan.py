@@ -18,6 +18,8 @@ from APservice import service,test_jishi
 import pymysql
 import APdatabase.a2 as a2
 from APdatabase import planIN,planedit,show
+from PyQt5.QtCore import QDate,QTime,QDateTime
+from datetime import datetime,date,timedelta
 
 
 
@@ -39,26 +41,31 @@ class Ui_MainWindow(QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
-        # self.setStyleSheet("#MainWindow{border-image:url(image/2.jpg)}")#
         MainWindow.setStyleSheet("#MainWindow{border-image:url(image/1.jpg)}")
         Ui_MainWindow.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
         self.plan_list = QtWidgets.QTableWidget(self.centralwidget)
-        self.plan_list.setGeometry(QtCore.QRect(60, 20, 600, 350))
+        self.plan_list.setGeometry(QtCore.QRect(60, 200, 500, 220))
         self.plan_list.setObjectName("plan_list")
-        # # self.plan_list.setStyleSheet("#{border-image:url(image/2.jpg)}")
-        # self.plan_list.setStyleSheet("QTableWidge{background:rgb(255, 0, 0, 50);}"
-        #                          "QTableWidge{color:rgb(255, 0, 0, 250); font-size:80px; font-weight:bold}")
         self.plan_list.setStyleSheet("QTableWidget{background:rgb(0, 0, 0,50);}"
                                  "QTableWidget{color:rgb(172, 255, 47, 250); font-size:20px; font-weight:bold}")
         self.plan_list.setColumnCount(3)
         self.plan_list.setRowCount(0)
 
+        self.plan_list2 = QtWidgets.QTableWidget(self.centralwidget)#新增历史未完成记录
+        self.plan_list2.setGeometry(QtCore.QRect(60, 20, 500, 150))
+        self.plan_list2.setObjectName("plan_list2")
+        self.plan_list2.setStyleSheet("QTableWidget{background:rgb(0, 0, 0,50);}"
+                                     "QTableWidget{color:rgb(172, 255, 47, 250); font-size:20px; font-weight:bold}")
+        self.plan_list2.setColumnCount(3)
+        self.plan_list2.setRowCount(0)#新增历史未完成记录
+
 
         self.plan_exec = QtWidgets.QGroupBox(self.centralwidget)
-        self.plan_exec.setGeometry(QtCore.QRect(70, 400, 651, 121))
+        self.plan_exec.setGeometry(QtCore.QRect(70, 450, 651, 121))
         self.plan_exec.setObjectName("plan_exec")
+
         self.layoutWidget = QtWidgets.QWidget(self.plan_exec)
         self.layoutWidget.setGeometry(QtCore.QRect(50, 50, 551, 35))
         self.layoutWidget.setObjectName("layoutWidget")
@@ -78,10 +85,40 @@ class Ui_MainWindow(QMainWindow):
         self.startBNT.setObjectName("startBNT")
         self.horizontalLayout.addWidget(self.startBNT)
         self.fenxiBNT = QtWidgets.QPushButton(self.centralwidget)
-        self.fenxiBNT.setGeometry(QtCore.QRect(680, 20, 100, 32))
+        self.fenxiBNT.setGeometry(QtCore.QRect(600, 60, 120, 32))
         self.fenxiBNT.setObjectName("fenxiBNT")
         self.fenxiBNT.setStyleSheet("QPushButton{background:rgb(0, 0, 0,100);}"
                                      "QPushButton{color:rgb(255, 230, 47, 250); font-size:20px; font-weight:bold}")
+
+
+        #新增日期选择按钮
+        self.dataIN2 = QtWidgets.QDateEdit(MainWindow)
+        self.dataIN2.setGeometry(QtCore.QRect(620, 140, 100, 32))
+        self.dataIN2.setObjectName("dataIN2")
+        self.dataIN2.setDateTime(QDateTime.currentDateTime())
+        # self.dataIN2.setDateTime(QDateTime.currentDateTime())
+
+        self.dateBNT = QtWidgets.QPushButton(MainWindow)
+        self.dateBNT.setGeometry(QtCore.QRect(580, 180, 160, 35))
+        self.dateBNT.setObjectName("dateBNT")
+        # self.horizontalLayout.addWidget(self.dateBNT)
+        #
+        # self.saveBNT = QtWidgets.QPushButton(planUI)
+        # self.saveBNT.setGeometry(QtCore.QRect(460, 340, 100, 32))
+        # self.saveBNT.setObjectName("saveBNT")
+        # self.dateBNT.clicked.connect(self.query)
+
+        global D
+
+        date1 = self.dataIN2.text()
+        creat_time = datetime.strptime(date1, "%Y/%m/%d")  #
+        D = datetime.strptime(date1, "%Y/%m/%d").date()
+        # D = datetime.strptime(date, "%Y/%m/%d")
+        # print(D,type(D))
+
+        # 新增日期选择按钮
+
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 24))
@@ -95,15 +132,27 @@ class Ui_MainWindow(QMainWindow):
         self.retranslateUi(MainWindow)
         self.addBNT.clicked.connect(self.planin)
         self.plan_list.setAlternatingRowColors(True)
-
         self.plan_list.itemClicked.connect(self.outSelect)
-        # self.query()
+
+        self.plan_list2.setAlternatingRowColors(True)#新增历史未完成
+        self.plan_list2.itemClicked.connect(self.outSelect2)#新增历史未完成
+
 
         self.dellBNT.clicked.connect(self.delete)
         self.startBNT.clicked.connect(self.play)
         self.fenxiBNT.clicked.connect(self.work)
+        self.dateBNT.clicked.connect(self.datein)
 
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.query()
+        self.query2()
+
+    def datein(self):
+        global D
+        date1 = self.dataIN2.text()
+        creat_time = datetime.strptime(date1, "%Y/%m/%d")  #
+        D = datetime.strptime(date1, "%Y/%m/%d").date()
+
         self.query()
 
     def outSelect(self, Item=None):#移到service
@@ -114,12 +163,32 @@ class Ui_MainWindow(QMainWindow):
         else:
             t = self.plan_list.currentRow()
             global planid_x, kemu_x, neirong_x, shichang_x, date_x
-            # print(t)
+
             planid_x = self.plan_list.item(t,0).text()
             kemu_x = self.plan_list.item(t,2).text()
             neirong_x = self.plan_list.item(t,3).text()
             shichang_x = self.plan_list.item(t,4).text()
             date_x = self.plan_list.item(t,1).text()
+            a2.setvalue('planid_x',planid_x)
+            a2.setvalue('shichang_x', shichang_x)
+            a2.setvalue('kemu_x', kemu_x)
+            a2.setvalue('neirong_x', neirong_x)
+
+
+    def outSelect2(self, Item=None):#移到service
+        if Item == None:
+
+
+            return
+        else:
+            t = self.plan_list2.currentRow()
+            global planid_x, kemu_x, neirong_x, shichang_x, date_x
+
+            planid_x = self.plan_list2.item(t,0).text()
+            kemu_x = self.plan_list2.item(t,2).text()
+            neirong_x = self.plan_list2.item(t,3).text()
+            shichang_x = self.plan_list2.item(t,4).text()
+            date_x = self.plan_list2.item(t,1).text()
             a2.setvalue('planid_x',planid_x)
             a2.setvalue('shichang_x', shichang_x)
             a2.setvalue('kemu_x', kemu_x)
@@ -151,10 +220,10 @@ class Ui_MainWindow(QMainWindow):
         #     QMessageBox.warning(None, '警告', '请先选择要执行的数据！', QMessageBox.Ok)
 
 
-    def query(self):#待完善：显示全部、显示完成、显示未完成、选取日期等
+    def query(self):#待完善：选取日期等
         self.plan_list.setRowCount(0)  # 清空表格中的所有行
 
-        result = service.query("select planID,date,kemu,neirong,shichang from tb_plan where wancheng_shifou =%s",0)
+        result = service.query("select planID,date,kemu,neirong,shichang from tb_plan where wancheng_shifou =%s and date = %s",0,D)
 
         row = len(result)  # 取得记录个数，用于设置表格的行数
 
@@ -170,8 +239,28 @@ class Ui_MainWindow(QMainWindow):
                 data = QTableWidgetItem(str(result[i][j]))  # 转换后可插入表格
 
                 self.plan_list.setItem(i, j, data)  # 设置每个单元格的数据
-                # self.plan_list.setStyleSheet("QTableWidge{background:rgb(255, 0, 0, 50);}"
-                #                              "QTableWidge{color:rgb(255, 0, 0, 250); font-size:80px; font-weight:bold}")
+
+
+    def query2(self):#待完善：显示历史未完成
+        self.plan_list2.setRowCount(0)  # 清空表格中的所有行
+
+        result2 = service.query("select planID,date,kemu,neirong,shichang from tb_plan where wancheng_shifou =%s and date < %s",0,D)
+
+        row = len(result2)  # 取得记录个数，用于设置表格的行数
+
+        self.plan_list2.setRowCount(row)  # 设置表格行数
+        self.plan_list2.setColumnCount(5)  # 设置表格列数
+        # if a2.setvalue（）      #设置只显示未完成的数据
+        # self.plan_list.setStyleSheet("QTableWidge{background:rgb(255, 0, 0, 50);}"
+        #                              "QTableWidge{color:rgb(255, 0, 0, 250); font-size:80px; font-weight:bold}")
+        # 设置表格的标题名称
+        self.plan_list2.setHorizontalHeaderLabels(["编号",'日期','科目', '内容', "计划时长"])
+        for i in range(row):  # 遍历行
+            for j in range(self.plan_list2.columnCount()):  # 遍历列
+                data = QTableWidgetItem(str(result2[i][j]))  # 转换后可插入表格
+
+                self.plan_list2.setItem(i, j, data)  # 设置每个单元格的数据
+
 
     def planin(self):
         self.close()
@@ -203,10 +292,12 @@ class Ui_MainWindow(QMainWindow):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "待击毙的小兔子"))
-        # self.plan_list.setTitle(_translate("MainWindow", "计划展示"))
-        self.plan_exec.setTitle(_translate("MainWindow", "计划设置"))
+        # self.plan_list.setTitle(_translate("MainWindow", "今日待办"))#新增显示今日待办
+        # self.plan_list2.setWindowTitle(_translate("MainWindow", "历史未完任务"))
+        self.plan_exec.setTitle(_translate("MainWindow", "今日待办任务"))
         self.addBNT.setText(_translate("MainWindow", "新增"))
         self.editBNT.setText(_translate("MainWindow", "修改，暂不支持"))
         self.dellBNT.setText(_translate("MainWindow", "删除"))
         self.startBNT.setText(_translate("MainWindow", "开始"))
-        self.fenxiBNT.setText(_translate("MainWindow", "成果分析"))
+        self.fenxiBNT.setText(_translate("MainWindow", "战果展示"))
+        self.dateBNT.setText(_translate("MainWindow", "选择需展示的某日计划"))

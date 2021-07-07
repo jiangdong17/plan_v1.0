@@ -5,32 +5,17 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import *
 from APservice.Ui_timer import Ui_MainWindow1
 from APservice.service import convert,convert1
-# from APservice.service import *
+
 from APservice import service
 from APdatabase import plan
-# from APdatabase.plan import planid_x,kemu_x,eirong_x,shichang_x
+
 import APdatabase.a2 as a2
 import time as timeUtil
-# from APservice.scor import *
-# # from APservice import scor
-# from PyQt5.QtMultimedia import QMediaPlayer,QMediaPlaylist,QMediaContent#添加音频控制
-# from PyQt5 import QtCore
-# import sys
-# from PyQt5.QtWidgets import QWidget, QApplication, QPushButton, QSlider, QLabel
-# from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
-# from PyQt5.QtCore import QUrl, Qt
-import os
-# from mp3play import mp3play
-# import PyAudio
 
-# import pyaudio
-# import wave
-#
-# import sys
-# import pyaudio
-# import wave
-# from tqdm import tqdm
-# import time
+import os
+
+
+from datetime import datetime,date,timedelta
 
 
 def get():
@@ -166,12 +151,17 @@ class Timer(QMainWindow, Ui_MainWindow1):
 
 
     def startTimer1(self):
+        # global start_time
         # 发出计时信号
         self.timer.start(0)
         # 如果 self._pause_flag 为真，更新开始时间
         # 否则，更新重启时间
         if not self._pause_flag:
+            global start_time
             self._start_time = self._current_time
+            # start_time = datetime.today().isoweekday()#星期几？
+            start_time = datetime.today() # 开始时间
+            print(start_time,type(start_time))
         else:
             self._restart_time = self._current_time
         # 设置按钮属性
@@ -202,13 +192,17 @@ class Timer(QMainWindow, Ui_MainWindow1):
     #添加数据库更新：开始时间、结束时间、休息时间、打分、完成标签、较平均分等变化情况
     def update1(self):#设置数据库更新
         global planID
-
+        print(start_time)
+        over_time = datetime.today()#结束时间
+        over_date = over_time.date()
+        print(over_time,type(over_time),over_date,type(over_date))
+        #
         planID = int(a2.getvalue('planid_x'))
 
         shichang = convert1(int(run_time))
 
 
-        result = service.exec("update tb_plan set zuotishichang=%s,wancheng_shifou=%s where planID=%s",(shichang,1,planID))
+        result = service.exec("update tb_plan set zuotishichang=%s,wancheng_shifou=%s,kaishi_time=%s,jieshu_time=%s,over_date=%s where planID=%s",(shichang,1,start_time,over_time,over_date,planID))
 
         if result > 0:  # 如果结果大于0，说明添加成功
 
